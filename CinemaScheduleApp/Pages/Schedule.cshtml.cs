@@ -6,17 +6,17 @@ namespace CinemaScheduleApp.Pages;
 
 public class ScheduleModel : PageModel
 {
-    private readonly MovieRepository _repository;
+    private readonly IMovieRepository _movieRepository;
 
     public List<Movie> Movies { get; set; } = new();
 
-    public ScheduleModel()
+    public ScheduleModel(IMovieRepository movieRepository)
     {
-        _repository = new MovieRepository();
+        _movieRepository = movieRepository;
     }
 
     public void OnGet()
     {
-        Movies = _repository.GetAllMovies().ToList();
+        Movies = _movieRepository.GetAllMovies().ToList();
     }
 }
