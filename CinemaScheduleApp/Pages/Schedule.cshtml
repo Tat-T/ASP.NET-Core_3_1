@@ -1,15 +1,15 @@
 ﻿@page
 @model CinemaScheduleApp.Pages.ScheduleModel
 @{
-    ViewData["Title"] = "Расписание киносеансов";
+    ViewData["Title"] = "Расписание фильмов";
 }
 
-<h1>Расписание киносеансов</h1>
+<h1>Расписание фильмов</h1>
 
 <table class="table">
     <thead>
         <tr>
-            <th>Название фильма</th>
+            <th>Название</th>
             <th>Сеансы</th>
         </tr>
     </thead>
@@ -17,11 +17,13 @@
         @foreach (var movie in Model.Movies)
         {
             <tr>
-                <td>@movie.Title</td>
+                <td>
+                    <a asp-page="/MovieDetails" asp-route-title="@movie.Title">@movie.Title</a>
+                </td>
                 <td>
                     @foreach (var showTime in movie.ShowTimes)
                     {
-                        <span>@showTime</span><br/>
+                        <span>@showTime</span><br />
                     }
                 </td>
             </tr>
