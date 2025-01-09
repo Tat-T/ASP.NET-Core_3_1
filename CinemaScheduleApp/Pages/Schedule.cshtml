@@ -1,0 +1,30 @@
+﻿@page
+@model CinemaScheduleApp.Pages.ScheduleModel
+@{
+    ViewData["Title"] = "Расписание киносеансов";
+}
+
+<h1>Расписание киносеансов</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Название фильма</th>
+            <th>Сеансы</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var movie in Model.Movies)
+        {
+            <tr>
+                <td>@movie.Title</td>
+                <td>
+                    @foreach (var time in movie.ShowTimes)
+                    {
+                        <span>@time </span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
